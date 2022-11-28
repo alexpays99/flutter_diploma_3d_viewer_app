@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_diploma_3d_viewer_app/models/model.dart';
+import 'package:flutter_diploma_3d_viewer_app/provider/ModelProvider.dart';
+import 'package:flutter_diploma_3d_viewer_app/screens/model_info.dart';
+import 'package:flutter_diploma_3d_viewer_app/widgets/bottom_navigation_bar.dart';
 import 'package:model_viewer/model_viewer.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => ModelProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -15,144 +25,230 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: '3D Models'),
+      home: const HomePage(),
+      initialRoute: '/bottom_navigation_bar',
+      routes: {
+        '/home': (context) => const HomePage(),
+        '/bottom_navigation_bar': (context) =>
+            const BottomNavigationBarWidget(),
+        '/model_info': (context) => const ModelInfo(),
+      },
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({
-    Key? key,
-    required this.title,
-  }) : super(key: key);
-
-  final String title;
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  final List<ModelViewer> models = [
-    ModelViewer(
-      src: 'lib/assets/bag.glb',
-      alt: "A 3D model of an astronaut",
-      ar: true,
-      autoRotate: true,
-      cameraControls: true,
+class _HomePageState extends State<HomePage> {
+  final List<Model> molerViewer = [
+    Model(
+      title: "BAG",
+      model: ModelViewer(
+        src: 'lib/assets/bag.glb',
+        alt: "A 3D model of an astronaut",
+        ar: true,
+        autoRotate: true,
+        cameraControls: true,
+        backgroundColor: Colors.yellow,
+      ),
     ),
-    ModelViewer(
-      src: 'lib/assets/Astronaut.glb',
-      alt: "A 3D model of an astronaut",
-      ar: true,
-      autoRotate: true,
-      cameraControls: true,
+    Model(
+      title: "BAG",
+      model: ModelViewer(
+        src: 'lib/assets/Astronaut.glb',
+        alt: "A 3D model of an astronaut",
+        ar: true,
+        autoRotate: true,
+        cameraControls: true,
+        backgroundColor: Colors.red,
+      ),
     ),
-    ModelViewer(
-      src: 'lib/assets/uploads-files-2382092-untitled.glb',
-      alt: "A 3D model of an astronaut",
-      ar: true,
-      autoRotate: true,
-      cameraControls: true,
+    Model(
+      title: "BAG",
+      model: ModelViewer(
+        src: 'lib/assets/uploads-files-2382092-untitled.glb',
+        alt: "A 3D model of an astronaut",
+        ar: true,
+        autoRotate: true,
+        cameraControls: true,
+        backgroundColor: Colors.green,
+      ),
     ),
-    ModelViewer(
-      src: 'lib/assets/uploads-files-3641433-Octopus_toy.glb',
-      alt: "A 3D model of an astronaut",
-      ar: true,
-      autoRotate: true,
-      cameraControls: true,
+    Model(
+      title: "BAG",
+      model: ModelViewer(
+        src: 'lib/assets/uploads-files-3641433-Octopus_toy.glb',
+        alt: "A 3D model of an astronaut",
+        ar: true,
+        autoRotate: true,
+        cameraControls: true,
+        backgroundColor: Colors.grey,
+      ),
     ),
-    ModelViewer(
-      src: 'lib/assets/uploads-files-3803418-bed83h.glb',
-      alt: "A 3D model of an astronaut",
-      ar: true,
-      autoRotate: true,
-      cameraControls: true,
+    Model(
+      title: "BAG",
+      model: ModelViewer(
+        src: 'lib/assets/uploads-files-3803418-bed83h.glb',
+        alt: "A 3D model of an astronaut",
+        ar: true,
+        autoRotate: true,
+        cameraControls: true,
+        backgroundColor: Colors.blue,
+      ),
     ),
-    ModelViewer(
-      src: 'lib/assets/uploads-files-4018512-ice+cream++only.glb',
-      alt: "A 3D model of an astronaut",
-      ar: true,
-      autoRotate: true,
-      cameraControls: true,
+    Model(
+      title: "BAG",
+      model: ModelViewer(
+        src: 'lib/assets/uploads-files-4018512-ice+cream++only.glb',
+        alt: "A 3D model of an astronaut",
+        ar: true,
+        autoRotate: true,
+        cameraControls: true,
+        backgroundColor: Colors.blueAccent,
+      ),
     ),
-    ModelViewer(
-      src: 'lib/assets/bag.glb',
-      alt: "A 3D model of an astronaut",
-      ar: true,
-      autoRotate: true,
-      cameraControls: true,
+    Model(
+      title: "BAG",
+      model: ModelViewer(
+        src: 'lib/assets/bag.glb',
+        alt: "A 3D model of an astronaut",
+        ar: true,
+        autoRotate: true,
+        cameraControls: true,
+        backgroundColor: Colors.redAccent,
+      ),
     ),
-    ModelViewer(
-      src: 'lib/assets/bag.glb',
-      alt: "A 3D model of an astronaut",
-      ar: true,
-      autoRotate: true,
-      cameraControls: true,
+    Model(
+      title: "BAG",
+      model: ModelViewer(
+        src: 'lib/assets/bag.glb',
+        alt: "A 3D model of an astronaut",
+        ar: true,
+        autoRotate: true,
+        cameraControls: true,
+        backgroundColor: Colors.redAccent,
+      ),
     ),
-    ModelViewer(
-      src: 'lib/assets/bag.glb',
-      alt: "A 3D model of an astronaut",
-      ar: true,
-      autoRotate: true,
-      cameraControls: true,
+    Model(
+      title: "BAG",
+      model: ModelViewer(
+        src: 'lib/assets/bag.glb',
+        alt: "A 3D model of an astronaut",
+        ar: true,
+        autoRotate: true,
+        cameraControls: true,
+        backgroundColor: Colors.redAccent,
+      ),
     ),
-    ModelViewer(
-      src: 'lib/assets/bag.glb',
-      alt: "A 3D model of an astronaut",
-      ar: true,
-      autoRotate: true,
-      cameraControls: true,
+    Model(
+      title: "BAG",
+      model: ModelViewer(
+        src: 'lib/assets/bag.glb',
+        alt: "A 3D model of an astronaut",
+        ar: true,
+        autoRotate: true,
+        cameraControls: true,
+        backgroundColor: Colors.redAccent,
+      ),
     ),
-    ModelViewer(
-      src: 'lib/assets/bag.glb',
-      alt: "A 3D model of an astronaut",
-      ar: true,
-      autoRotate: true,
-      cameraControls: true,
+    Model(
+      title: "BAG",
+      model: ModelViewer(
+        src: 'lib/assets/bag.glb',
+        alt: "A 3D model of an astronaut",
+        ar: true,
+        autoRotate: true,
+        cameraControls: true,
+        backgroundColor: Colors.redAccent,
+      ),
     ),
-    ModelViewer(
-      src: 'lib/assets/bag.glb',
-      alt: "A 3D model of an astronaut",
-      ar: true,
-      autoRotate: true,
-      cameraControls: true,
+    Model(
+      title: "BAG",
+      model: ModelViewer(
+        src: 'lib/assets/bag.glb',
+        alt: "A 3D model of an astronaut",
+        ar: true,
+        autoRotate: true,
+        cameraControls: true,
+        backgroundColor: Colors.redAccent,
+      ),
     ),
-    ModelViewer(
-      src: 'lib/assets/bag.glb',
-      alt: "A 3D model of an astronaut",
-      ar: true,
-      autoRotate: true,
-      cameraControls: true,
+    Model(
+      title: "BAG",
+      model: ModelViewer(
+        src: 'lib/assets/bag.glb',
+        alt: "A 3D model of an astronaut",
+        ar: true,
+        autoRotate: true,
+        cameraControls: true,
+        backgroundColor: Colors.redAccent,
+      ),
     ),
-    ModelViewer(
-      src: 'lib/assets/bag.glb',
-      alt: "A 3D model of an astronaut",
-      ar: true,
-      autoRotate: true,
-      cameraControls: true,
-    )
   ];
 
   @override
-  void initState() {
-    super.initState();
-    models;
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final modelProvider = Provider.of<ModelProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: const Text('3D Models'),
+        automaticallyImplyLeading: false,
       ),
       body: ListView.builder(
-        itemCount: models.length,
+        itemCount: molerViewer.length,
         itemBuilder: (context, index) {
-          return SizedBox(
-            width: MediaQuery.of(context).size.width,
-            height: 200,
-            child: models[index],
+          return Padding(
+            padding:
+                const EdgeInsets.only(left: 30.0, right: 30.0, bottom: 10.0),
+            child: InkWell(
+              onTap: () {
+                modelProvider.setModel(molerViewer[index]);
+                Navigator.of(context).pushNamed('/model_info');
+              },
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: Color.fromARGB(64, 137, 165, 170),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10.0),
+                    bottomLeft: Radius.circular(10.0),
+                    topRight: Radius.circular(10.0),
+                    bottomRight: Radius.circular(10.0),
+                  ),
+                ),
+                child: Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        height: 200,
+                        child: molerViewer[index].model,
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    Row(
+                      children: [
+                        const Spacer(),
+                        const Icon(
+                          Icons.favorite,
+                          color: Color.fromARGB(108, 255, 82, 82),
+                        ),
+                        const SizedBox(width: 10),
+                        Text(molerViewer[index].title),
+                        const Spacer(),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                  ],
+                ),
+              ),
+            ),
           );
         },
       ),
