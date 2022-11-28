@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
-import 'package:flutter_diploma_3d_viewer_app/main.dart';
 import 'package:flutter_diploma_3d_viewer_app/screens/favourite_screen.dart';
+import 'package:flutter_diploma_3d_viewer_app/screens/home_screen.dart';
 
 class BottomNavigationBarWidget extends StatefulWidget {
   const BottomNavigationBarWidget({Key? key}) : super(key: key);

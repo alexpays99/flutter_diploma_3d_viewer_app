@@ -11,14 +11,33 @@ class ModelInfo extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.amber,
         title: Text(modelProvider.model.title),
       ),
-      body: Center(
-        child: SizedBox(
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          child: modelProvider.model.model,
-        ),
+      body: Column(
+        children: [
+          SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: 300,
+            child: modelProvider.model.model,
+          ),
+          const SizedBox(height: 20),
+          Row(
+            children: const [
+              Spacer(),
+              Text(
+                'Price: 5',
+                style: TextStyle(fontSize: 25),
+              ),
+              SizedBox(width: 10),
+              Text(
+                'Description:',
+                style: TextStyle(fontSize: 25),
+              ),
+              Spacer(),
+            ],
+          ),
+        ],
       ),
     );
   }
