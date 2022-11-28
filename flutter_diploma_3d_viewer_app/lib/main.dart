@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:model_viewer/model_viewer.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,13 +15,16 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: '3D Models'),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  const MyHomePage({
+    Key? key,
+    required this.title,
+  }) : super(key: key);
 
   final String title;
 
@@ -29,12 +33,111 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+  final List<ModelViewer> models = [
+    ModelViewer(
+      src: 'lib/assets/bag.glb',
+      alt: "A 3D model of an astronaut",
+      ar: true,
+      autoRotate: true,
+      cameraControls: true,
+    ),
+    ModelViewer(
+      src: 'lib/assets/Astronaut.glb',
+      alt: "A 3D model of an astronaut",
+      ar: true,
+      autoRotate: true,
+      cameraControls: true,
+    ),
+    ModelViewer(
+      src: 'lib/assets/uploads-files-2382092-untitled.glb',
+      alt: "A 3D model of an astronaut",
+      ar: true,
+      autoRotate: true,
+      cameraControls: true,
+    ),
+    ModelViewer(
+      src: 'lib/assets/uploads-files-3641433-Octopus_toy.glb',
+      alt: "A 3D model of an astronaut",
+      ar: true,
+      autoRotate: true,
+      cameraControls: true,
+    ),
+    ModelViewer(
+      src: 'lib/assets/uploads-files-3803418-bed83h.glb',
+      alt: "A 3D model of an astronaut",
+      ar: true,
+      autoRotate: true,
+      cameraControls: true,
+    ),
+    ModelViewer(
+      src: 'lib/assets/uploads-files-4018512-ice+cream++only.glb',
+      alt: "A 3D model of an astronaut",
+      ar: true,
+      autoRotate: true,
+      cameraControls: true,
+    ),
+    ModelViewer(
+      src: 'lib/assets/bag.glb',
+      alt: "A 3D model of an astronaut",
+      ar: true,
+      autoRotate: true,
+      cameraControls: true,
+    ),
+    ModelViewer(
+      src: 'lib/assets/bag.glb',
+      alt: "A 3D model of an astronaut",
+      ar: true,
+      autoRotate: true,
+      cameraControls: true,
+    ),
+    ModelViewer(
+      src: 'lib/assets/bag.glb',
+      alt: "A 3D model of an astronaut",
+      ar: true,
+      autoRotate: true,
+      cameraControls: true,
+    ),
+    ModelViewer(
+      src: 'lib/assets/bag.glb',
+      alt: "A 3D model of an astronaut",
+      ar: true,
+      autoRotate: true,
+      cameraControls: true,
+    ),
+    ModelViewer(
+      src: 'lib/assets/bag.glb',
+      alt: "A 3D model of an astronaut",
+      ar: true,
+      autoRotate: true,
+      cameraControls: true,
+    ),
+    ModelViewer(
+      src: 'lib/assets/bag.glb',
+      alt: "A 3D model of an astronaut",
+      ar: true,
+      autoRotate: true,
+      cameraControls: true,
+    ),
+    ModelViewer(
+      src: 'lib/assets/bag.glb',
+      alt: "A 3D model of an astronaut",
+      ar: true,
+      autoRotate: true,
+      cameraControls: true,
+    ),
+    ModelViewer(
+      src: 'lib/assets/bag.glb',
+      alt: "A 3D model of an astronaut",
+      ar: true,
+      autoRotate: true,
+      cameraControls: true,
+    )
+  ];
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+  @override
+  void initState() {
+    super.initState();
+    models;
   }
 
   @override
@@ -43,24 +146,15 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+      body: ListView.builder(
+        itemCount: models.length,
+        itemBuilder: (context, index) {
+          return SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: 200,
+            child: models[index],
+          );
+        },
       ),
     );
   }
